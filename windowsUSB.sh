@@ -10,6 +10,25 @@ fi
 read -p "Enter the USB device location (e.g., /dev/sdX): " usb_location
 read -p "Enter the path to the Windows 11 ISO file: " iso_location
 
+# Check if the USB device exists
+if [ ! -b "$usb_location" ]; then
+    echo "Error: USB device $usb_location does not exist."
+    exit 1
+fi
+
+# Check if the ISO file exists
+if [ ! -f "$iso_location" ]; then
+    echo "Error: ISO file $iso_location does not exist."
+    exit 1
+fi
+
+# Confirm user is sure about the USB device
+read -p "WARNING: All data on $usb_location will be erased. Are you sure? (y/n): " confirm
+if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
+    echo "Operation cancelled."
+    exit 0
+fi
+
 # Wipe the USB
 wipefs -a "$usb_location"
 
