@@ -10,9 +10,10 @@ This script creates a bootable USB drive for Windows 11 using a specified ISO fi
 ## Usage
 
 1. Download the script:
-   ```bash
-   wget https://github.com/0xjah/WinBootUSB/raw/main/WindowsUSB.sh
-   ```
+ ```bash
+ git clone https://github.com/0xjah/WinBootUSB.git
+ cd WinBootUSB
+ ```
 2. Make the script executable:
 ```bash
 chmod +x WindowsUSB.sh
